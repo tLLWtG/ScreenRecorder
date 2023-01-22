@@ -1,0 +1,40 @@
+{
+  "name": "screenrecorder",
+  "version": "0.1.0",
+  "description": "A screen recorder based on Electron.",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "format": "prettier -w *.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tLLWtG/ScreenRecorder.git"
+  },
+  "keywords": [
+    "Screen",
+    "Recorder",
+    "Electron"
+  ],
+  "author": "tLLWtG",
+  "license": "MIT License",
+  "bugs": {
+    "url": "https://github.com/tLLWtG/ScreenRecorder/issues"
+  },
+  "homepage": "https://github.com/tLLWtG/ScreenRecorder#readme",
+  "devDependencies": {
+    "@electron-forge/cli": "^6.0.4",
+    "@electron-forge/maker-deb": "^6.0.4",
+    "@electron-forge/maker-rpm": "^6.0.4",
+    "@electron-forge/maker-squirrel": "^6.0.4",
+    "@electron-forge/maker-zip": "^6.0.4",
+    "dotenv": "^16.0.3",
+    "electron": "^22.0.3",
+    "prettier": "^2.8.3"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  }
+}
