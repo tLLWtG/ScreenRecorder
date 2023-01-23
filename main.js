@@ -1,16 +1,76 @@
 // Modules to control application life and create native browser window
-const { app, BrowserWindow } = require("electron");
+const { app, BrowserWindow, Menu } = require("electron");
 const path = require("path");
 
 // run this as early in the main process as possible
 // to Handling startup events of electron-winstaller
 if (require("electron-squirrel-startup")) app.quit();
 
+// Menu
+const template = [
+  {
+    label: "Menu",
+    submenu: [
+      {
+        label: "Quit",
+        accelerator: "Ctrl+Q",
+        click: () => {
+          app.quit();
+        },
+      },
+    ],
+  },
+  {
+    label: "About",
+    submenu: [
+      {
+        label: "About",
+        click: () => {
+          const aboutWindow = new BrowserWindow({
+            width: 400,
+            height: 250,
+            resizable: false,
+          });
+          aboutWindow.loadFile(path.join(__dirname, "Menu", "about.html"));
+        },
+      },
+      {
+        type: "separator",
+      },
+      {
+        label: "License",
+        click: () => {
+          const licenseWindow = new BrowserWindow({
+            width: 400,
+            height: 250,
+            resizable: false,
+          });
+          licenseWindow.loadFile(path.join(__dirname, "Menu", "license.html"));
+        },
+      },
+    ],
+  },
+  {
+    label: "Help",
+    click: () => {
+      const helpWindow = new BrowserWindow({
+        width: 400,
+        height: 250,
+        resizable: false,
+      });
+      helpWindow.loadFile(path.join(__dirname, "Menu", "help.html"));
+    },
+  },
+];
+const menu = Menu.buildFromTemplate(template);
+Menu.setApplicationMenu(menu);
+
 function createWindow() {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
+    resizable: false,
     webPreferences: {
       preload: path.join(__dirname, "preload.js"),
     },
